@@ -14,7 +14,7 @@ function protected_route (req, res, next) {
 
 // RUTAS
 router.get('/', protected_route, (req, res) => {
-  res.render('index.html')
+  res.render('index.html', {user: req.session.user})
 })
 
 router.get('/seguidos', protected_route, async (req, res) => {

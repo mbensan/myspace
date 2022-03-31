@@ -4,7 +4,23 @@
   <main class="form-signin mt-5 row">
     <form class="col-4 offset-4" method="post" action="/login">
       <h1 class="h3 mb-3 fw-normal">Ingrese a la Plataforma</h1>
-
+      <!--
+      <div class=" row">
+        <div class="col-6">
+          <label for="">Fecha</label> 
+          <input type="date" name="fecha" min="2022-03-28" required>
+        </div>
+        <div class="col-6">
+          <label for="">Hora</label>
+          <select name="hora" id="hora" required>
+            {% for i in [8,9,10,11,12,13,14,15,16,17]%}
+              <option value="{{i}}">{{ i }}:00</option>
+              <option value="{{i}}:30">{{ i }}:30</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    -->
       <div class="form-floating">
         <input name="email" required type="email" class="form-control" placeholder="name@example.com">
         <label for="floatingInput">Email</label>

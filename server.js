@@ -9,6 +9,7 @@ const app = express()
 
 // CONFIGURACIONES
 app.use(express.static('static'))
+app.use(express.static('node_modules/socket.io/client-dist'))
 
 nunjucks.configure("templates", {
   express: app,
@@ -46,4 +47,17 @@ app.use(require('./routes/auth.js'))
 app.use(require('./routes/routes.js'))
 
 const PORT = 3000
-app.listen(PORT, () => console.log(`Servidor escuchando en el puerto ${PORT}`))
+const server = app.listen(PORT, () => console.log(`Servidor escuchando en el puerto ${PORT}`))
+
+
+// configuraciones de los sockets
+const io = require('socket.io')(server)
+
+io.on('connection', function (socket) {
+
+  socket.on('mensajes', function (datos) {
+    console.log(datos);
+    socket.broadcast.emit('nuevo_mensaje', datos)
+  })
+
+})
